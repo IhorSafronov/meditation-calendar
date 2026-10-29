@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Особистий календар рунних медитацій за датою народження">
+  <title>Рунна медитація</title>
+  <link rel="icon" href="img/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Manrope:wght@400;500;600;700&family=Noto+Sans+Runic&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <img src="img/logo.png" alt="pro.runes">
+    <div class="eyebrow">pro.runes</div>
+    <h1>Рунна медитація</h1>
+    <p class="lead">Введи дату народження — і отримаєш свій особистий календар рунних медитацій. Кожна руна читається стільки днів, скільки означає її число.</p>
+  </header>
+
+  <section class="card" id="setup">
+    <form id="form">
+      <label>Дата народження
+        <input type="text" id="dob" inputmode="numeric" placeholder="14.04.1990" autocomplete="bday" required>
+      </label>
+      <label>Дата початку медитацій
+        <input type="date" id="start" required>
+        <span class="small">Можна почати сьогодні або в будь-який день пізніше</span>
+      </label>
+      <p class="error" id="err" hidden></p>
+      <button class="btn" type="submit">Скласти мій календар</button>
+    </form>
+    <details style="margin-top:16px">
+      <summary class="small" style="cursor:pointer">Вже маєш код прогресу?</summary>
+      <div class="code-row" style="margin-top:10px">
+        <input type="text" id="restoreInput" placeholder="Встав свій код">
+        <button class="btn ghost" type="button" id="restoreBtn">Відновити</button>
+      </div>
+    </details>
+  </section>
+
+  <div id="plan" hidden>
+    <section class="card">
+      <div class="eyebrow" style="margin-bottom:12px">твій рунічний код</div>
+      <div class="runes" id="runes"></div>
+      <p class="small" id="formula" style="margin:14px 0 0"></p>
+    </section>
+
+    <p class="card" id="notice" hidden style="margin:24px 0 0;border-color:#c0562a;color:#ffb59a"></p>
+    <section class="card" id="todayCard" style="margin-top:24px">
+      <div class="today" id="today"></div>
+      <div style="margin-top:18px" class="bar"><i id="barFill"></i></div>
+      <div class="stats" style="margin-top:8px"><span id="statDone"></span><span id="statPlan"></span></div>
+      <div class="actions" style="margin-top:18px">
+        <button class="btn" id="markBtn" type="button">Відмітити сьогоднішню медитацію</button>
+        <button class="btn ghost" id="undoBtn" type="button">Скасувати сьогоднішню відмітку</button>
+      </div>
+    </section>
+
+    <section class="card" style="margin-top:24px">
+      <h2>Календар</h2>
+      <p class="small" style="margin:6px 0 0">Твій цикл проходиться <b style="color:var(--gold)">3 кола поспіль</b>, щодня без перерви. Відмічати можна лише сьогоднішній день. <b style="color:var(--gold)">Пропустив день — цикл починається заново.</b></p>
+      <div id="calendar"></div>
+    </section>
+
+    <section class="card" style="margin-top:24px">
+      <h2>Не загубити прогрес</h2>
+      <p class="small" style="margin:6px 0 14px">Щоб не пропустити день, увімкни щоденне нагадування в календарі. Прогрес зберігається в цьому браузері. Щоб відкрити його на іншому телефоні, збережи код — він оновлюється з кожною відміткою.</p>
+      <div class="code-row">
+        <input type="text" id="codeOut" readonly>
+        <button class="btn ghost" type="button" id="copyBtn">Копіювати</button>
+      </div>
+      <div class="actions" style="margin-top:14px">
+        <label style="flex:0 0 auto">Час нагадування<input type="time" id="remTime" value="08:00" style="width:auto"></label>
+        <a class="btn ghost" id="gcal" target="_blank" rel="noopener" style="align-self:flex-end">Додати нагадування в Google Календар</a>
+        <button class="btn ghost" type="button" id="resetBtn">Почати заново</button>
+      </div>
+    </section>
+  </div>
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>
