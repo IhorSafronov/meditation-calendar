@@ -119,6 +119,14 @@ function updateGcal(total){
 }
 function plural(n){const a=n%10,b=n%100;if(a===1&&b!==11)return"день";if(a>=2&&a<=4&&(b<12||b>14))return"дні";return"днів";}
 
+// автоматично ставимо крапки: 14041990 -> 14.04.1990
+$("dob").addEventListener("input",e=>{
+  const d=e.target.value.replace(/\D/g,"").slice(0,8);
+  let v=d.slice(0,2);
+  if(d.length>2)v+="."+d.slice(2,4);
+  if(d.length>4)v+="."+d.slice(4);
+  e.target.value=v;
+});
 $("start").value=todayISO();
 $("form").addEventListener("submit",e=>{
   e.preventDefault();

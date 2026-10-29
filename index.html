@@ -23,7 +23,8 @@
   <section class="card" id="setup">
     <form id="form">
       <label>Дата народження
-        <input type="text" id="dob" inputmode="numeric" placeholder="14.04.1990" autocomplete="bday" required>
+        <input type="text" id="dob" inputmode="numeric" pattern="[0-9.]*" maxlength="10" placeholder="ДД.ММ.РРРР" autocomplete="bday" required>
+        <span class="small">Просто вводь цифри — крапки з’являться самі</span>
       </label>
       <label>Дата початку медитацій
         <input type="date" id="start" required>
